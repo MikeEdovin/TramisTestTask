@@ -1,13 +1,15 @@
 package Entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 @Entity
 @Table(name="cargoes")
+@Data
 public class Cargo {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cargo_id")
     int id;
     @Column(name="Товар")
@@ -18,8 +20,7 @@ public class Cargo {
     BigDecimal grossWeight;
     @Column(name="Объем")
     BigDecimal volume;
-   // @OneToOne(mappedBy = "cargo")
-   // Container container;
-   // @OneToOne(mappedBy = "cargo")
-   // Declaration declaration;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="cargo_id",referencedColumnName = "declaration_id")
+    Declaration declaration;
 }

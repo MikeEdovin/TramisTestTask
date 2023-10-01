@@ -1,14 +1,17 @@
 package Entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
 @Table(name="orders")
+@Data
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="order_id")
     int id;
     @Column(name="Клиент")
@@ -37,7 +40,7 @@ public class Order {
     Date complitionDate;
     @Column(name="Packing")
     Date packing;
-    @Column(name="Подготовка коммерческих документов")
+    @Column(name="Подготовка коммерческих док-ов")
     Date commercialDocsPreparationDate;
     @Column(name="Дата отправки док-тов")
     Date sendingDocsDate;
@@ -45,7 +48,7 @@ public class Order {
     Date receptingDocsDate;
     @Column(name="Примечание")
     String notes;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="order_id",referencedColumnName = "delivery_id")
     Delivery delivery;
 }

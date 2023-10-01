@@ -7,16 +7,16 @@ import lombok.Data;
 @Entity
 @Table(name="containers")
 @Data
-public class Container {
+public class ShippingContainer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="container_id")
     int id;
     @Column(name="Номер контейнера")
     String number;
     @Column(name="Тип конт.")
     String type;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="container_id",referencedColumnName = "cargo_id")
     Cargo cargo;
 

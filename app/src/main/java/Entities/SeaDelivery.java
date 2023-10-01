@@ -1,13 +1,16 @@
 package Entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
 @Entity
+@Table(name="saedeliveries")
+@Data
 public class SeaDelivery {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="seadelivery_id")
     int id;
     @Column(name="Порт")
@@ -32,7 +35,7 @@ public class SeaDelivery {
     Date hblReleaseDate;
     @Column(name="Дата прибытия")
     Date arrivalDate;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="container_id")
     Delivery delivery;
 }
