@@ -9,6 +9,8 @@ import java.util.Date;
 @Table(name="declarations")
 public class Declaration {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="declaration_id")
     int id;
     @Column(name="Номер декларации")
     String decalarationNumber;
@@ -20,5 +22,8 @@ public class Declaration {
     String broker;
     @Column(name="Таможенный пост")
     String customsPost;
+    @OneToOne
+    @JoinColumn(name="declaration_id",referencedColumnName = "cargo_id")
+    Cargo cargo;
 
 }

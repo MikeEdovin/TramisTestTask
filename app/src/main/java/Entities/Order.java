@@ -1,4 +1,51 @@
 package Entities;
 
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+
+@Entity
+@Table(name="orders")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="order_id")
+    int id;
+    @Column(name="Клиент")
+    String client;
+    @Column(name="Поставщик")
+    String provider;
+    @Column(name="Номер инвойса")
+    String invoice;
+    @Column(name="Получатель")
+    String recipient;
+    @Column(name="Экспедитор")
+    String forwarder;
+    @Column(name="Дата создания заказа")
+    Date creationDate;
+    @Column(name="Дата проверки")
+    Date inspectionDate;
+    @Column(name="Дата получения")
+    Date recievingDate;
+    @Column(name="Номер заказа")
+    String orderNumber;
+    @Column(name="Стоимость")
+    BigDecimal price;
+    @Column(name="Особые условия погрузки")
+    String specialLoadingConditions;
+    @Column(name="Дата готовн.")
+    Date complitionDate;
+    @Column(name="Packing")
+    Date packing;
+    @Column(name="Подготовка коммерческих документов")
+    Date commercialDocsPreparationDate;
+    @Column(name="Дата отправки док-тов")
+    Date sendingDocsDate;
+    @Column(name="Дата получ. док-тов")
+    Date receptingDocsDate;
+    @Column(name="Примечание")
+    String notes;
+    @OneToOne
+    @JoinColumn(name="order_id",referencedColumnName = "delivery_id")
+    Delivery delivery;
 }
