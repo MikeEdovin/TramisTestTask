@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ServiceConfig {
+
     @Bean(name = "objectMapper")
     ObjectMapper getObjectMapper(){
         return new ObjectMapper();
@@ -15,7 +16,7 @@ public class ServiceConfig {
 
     @Bean(name="orderService")
     OrderService orderService(){
-        return new OrderServiceImpl();
+      return new OrderServiceImpl();
     }
 
 }

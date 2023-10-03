@@ -2,9 +2,9 @@ package Entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table(name="orders")
@@ -48,7 +48,6 @@ public class Order {
     Date receptingDocsDate;
     @Column(name="Примечание")
     String notes;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="order_id",referencedColumnName = "delivery_id")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "order")
     Delivery delivery;
 }

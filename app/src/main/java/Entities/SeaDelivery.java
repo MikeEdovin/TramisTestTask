@@ -3,7 +3,8 @@ package Entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table(name="saedeliveries")
@@ -35,7 +36,6 @@ public class SeaDelivery {
     Date hblReleaseDate;
     @Column(name="Дата прибытия")
     Date arrivalDate;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="container_id")
+    @OneToOne
     Delivery delivery;
 }

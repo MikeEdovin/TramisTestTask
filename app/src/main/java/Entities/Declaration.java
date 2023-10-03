@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name="declarations")
@@ -15,7 +15,7 @@ public class Declaration {
     @Column(name="declaration_id")
     int id;
     @Column(name="Номер декларации")
-    String decalarationNumber;
+    String declarationNumber;
     @Column(name="Дата подачи декларации")
     Date dateOfFilling;
     @Column(name="Дата выпуска декларации")
@@ -24,5 +24,7 @@ public class Declaration {
     String broker;
     @Column(name="Таможенный пост")
     String customsPost;
+    @OneToOne
+    Cargo cargo;
 
 }

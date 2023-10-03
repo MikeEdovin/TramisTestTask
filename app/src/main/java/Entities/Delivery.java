@@ -4,8 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import lombok.Data;
-import org.hibernate.annotations.Cascade;
-
 import java.util.List;
 
 
@@ -27,15 +25,14 @@ public class Delivery {
     String deliveryCountry;
     @Column(name="Склад")
     String destinationWarehouse;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="container_id",referencedColumnName = "delivery_id")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "delivery")
     List<ShippingContainer> shippingContainers;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="delivery_id",referencedColumnName = "seadelivery_id")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "delivery")
     SeaDelivery seaDelivery;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="delivery_id",referencedColumnName = "landdelivery_id")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "delivery")
     LandDelivery landDelivery;
+    @OneToOne
+    Order order;
 
 
 

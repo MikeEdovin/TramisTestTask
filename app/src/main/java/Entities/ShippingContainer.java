@@ -16,9 +16,11 @@ public class ShippingContainer {
     String number;
     @Column(name="Тип конт.")
     String type;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="container_id",referencedColumnName = "cargo_id")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "shippingContainer")
     Cargo cargo;
+    @ManyToOne
+    Delivery delivery;
+
 
 
 }

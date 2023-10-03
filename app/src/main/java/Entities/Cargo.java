@@ -2,7 +2,6 @@ package Entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.math.BigDecimal;
 @Entity
 @Table(name="cargoes")
@@ -20,7 +19,8 @@ public class Cargo {
     BigDecimal grossWeight;
     @Column(name="Объем")
     BigDecimal volume;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="cargo_id",referencedColumnName = "declaration_id")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "cargo")
     Declaration declaration;
+    @OneToOne
+    ShippingContainer shippingContainer;
 }

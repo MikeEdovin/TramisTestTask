@@ -3,7 +3,7 @@ package Entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 @Entity
@@ -22,7 +22,6 @@ public class LandDelivery {
     Date uploadingDate;
     @Column(name="ВТТ")
     boolean internalCustomsTransit;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="container_id")
+    @OneToOne
     Delivery delivery;
 }
